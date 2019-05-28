@@ -1,8 +1,11 @@
-# Project dependencies
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-node_modules
+# Node
+npm-debug.log*
+node_modules/
+
+# Build
 .cache/
-# Build directory
+dist/
 public/
-.DS_Store
-yarn-error.log
+
+# Editors
+.vscode/*
