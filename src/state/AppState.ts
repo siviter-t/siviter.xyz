@@ -1,10 +1,8 @@
-import { HeaderState } from "state/components/HeaderState";
-import { LayoutState, layoutReducer, LayoutAction } from "state/components/LayoutState";
 import { AppAction } from "state/AppAction";
 import { isOfReducerAction } from "state/isOfType";
+import { LayoutState, layoutReducer, LayoutAction } from "state/components/LayoutState";
 
 export interface AppState {
-    header: HeaderState;
     layout: LayoutState;
 }
 

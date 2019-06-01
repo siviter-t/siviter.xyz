@@ -9,7 +9,7 @@ export const Dark: Theme = {
         subtitle: "#EEEEEE",
         emphasis: "#141416",
         normal: "#E0D0FF",
-        subtle: "#3E3E44",
+        subtle: "#A4A4AC",
         shadow: "#FFFFFF"
     }
 };

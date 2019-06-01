@@ -1,10 +1,10 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { Location } from "@reach/router";
 
 import { AppState } from "state/AppState";
 import styled, { ThemeProvider } from "framework/StyledComponents";
 import { Media, Breakpoint } from "style/Media";
-
 import { SideBar } from "components/SideBar";
 
 const GridContainer = styled.div`
@@ -14,25 +14,31 @@ const GridContainer = styled.div`
     background: ${props => props.theme.background};
     transition: all 0.3s ease-in-out;
     display: flex;
-    ${Media.max(Breakpoint.S)`
-        display: block;
+    ${Media.max(Breakpoint.M)`
+        flex-flow: column;
+        overflow-y: auto;
     `}
     ${Media.fluidTypography(Breakpoint.XS, Breakpoint.L, 14, 16)}
     ${Media.fluidTypography(Breakpoint.L, Breakpoint.XL, 16, 28)}
 `;
 
-const SideBarColumn = styled.div`
+const SideBarColumn = styled.div<{ isExpanded: boolean }>`
+    width: ${props => (props.isExpanded ? "100%" : "auto")};
     height: 100%;
     display: flex;
     flex-shrink: 0;
     background: ${props => props.theme.sidebar};
-    ${Media.max(Breakpoint.S)`
+    box-shadow: -5px -5px 5px 2px ${props => props.theme.brand};
+    ${props =>
+        !props.isExpanded &&
+        Media.max(Breakpoint.M)`
         height: auto;
         display: block;
     `}
+    transition: width 0.3s ease-in-out;
 `;
 
-const MainColumn = styled.div`
+const MainColumn = styled.div<{ isShown: boolean }>`
     height: 100%;
     flex-grow: 3;
 
@@ -41,29 +47,74 @@ const MainColumn = styled.div`
         text-decoration: none;
     }
 
-    &::before {
-        content: "";
-        position: absolute;
-        width: 0.15em;
-        top: 1%;
-        height: 98%;
-        margin-left: 0.5em;
-        background: ${props => props.theme.sidebar};
-        ${Media.max(Breakpoint.S)`
-            display: none;
-        `}
-    }
+    ${Media.min(Breakpoint.M)`
+        overflow-y: auto;
+    `}
 `;
 
 const Main = styled.div`
     color: ${props => props.theme.text.normal};
-    padding: 1em 2em;
+    padding: 1em 3em 3em;
 
     & a {
-        text-shadow: 0 0 0.025em ${props => props.theme.text.shadow};
+        color: ${props => props.theme.brand};
+        font-weight: 700;
+        text-decoration: none;
+        position: relative;
+
+        &:before {
+            content: "";
+            width: 90%;
+            min-height: 1px;
+            height: 1%;
+            left: 5%;
+            bottom: -0.1em;
+            position: absolute;
+            transition: background 0.5s ease-out;
+        }
 
         &:hover {
-            text-shadow: 0 0 0.05em ${props => props.theme.text.shadow};
+            &:before {
+                background: ${props => props.theme.brand};
+            }
+        }
+    }
+
+    & table {
+        width: auto;
+        max-width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0;
+        thead tr {
+            background: ${props => props.theme.sidebar};
+        }
+        tr {
+            border-top: 1px solid ${props => props.theme.sidebar};
+            margin: 0;
+            padding: 0;
+            &:nth-child(2n) {
+                background: ${props => props.theme.sidebar};
+            }
+            th {
+                font-weight: bold;
+                border: 1px solid ${props => props.theme.sidebar};
+                margin: 0;
+                padding: 4px 12px;
+            }
+            td {
+                border: 1px solid ${props => props.theme.sidebar};
+                margin: 0;
+                padding: 4px 12px;
+            }
+            th:first-child,
+            td:first-child {
+                margin-top: 0;
+            }
+            th:last-child,
+            td:last-child {
+                margin-bottom: 0;
+            }
         }
     }
 `;
@@ -79,17 +130,26 @@ class LayoutComponent extends React.PureComponent<LayoutProps> {
         return (
             <>
                 <ThemeProvider theme={this.props.theme}>
-                    <GridContainer>
-                        <SideBarColumn>
-                            <SideBar />
-                        </SideBarColumn>
-                        <MainColumn>
-                            <Main>{this.props.children}</Main>
-                        </MainColumn>
-                    </GridContainer>
+                    <Location>
+                        {({ location }) => {
+                            const isHomePage = location.pathname === "/";
+                            return (
+                                <GridContainer>
+                                    <SideBarColumn isExpanded={isHomePage}>
+                                        <SideBar />
+                                    </SideBarColumn>
+                                    <MainColumn isShown={!isHomePage}>{this.renderMain(isHomePage)}</MainColumn>
+                                </GridContainer>
+                            );
+                        }}
+                    </Location>
                 </ThemeProvider>
             </>
         );
+    }
+
+    public renderMain(isHomePage: boolean) {
+        return isHomePage ? this.props.children : <Main>{this.props.children}</Main>;
     }
 }
 

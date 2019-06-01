@@ -1,16 +1,15 @@
 import * as React from "react";
 
 import { Header } from "components/Header";
+import { PostList } from "components/blog/PostList";
 
 export default class extends React.PureComponent {
     public render() {
         return (
             <>
-                <Header slugTitle="Not found" />
-                <div>
-                    <h1>Not found</h1>
-                    <p>Woops! How embarrassing, this page does not exist.</p>
-                </div>
+                <Header slug="/blog" slugTitle="Blog" />
+                <h1>Blog</h1>
+                <PostList />
             </>
         );
     }

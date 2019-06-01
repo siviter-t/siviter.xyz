@@ -2,7 +2,7 @@ import { Theme } from "style/Theme";
 
 export const Light: Theme = {
     brand: "#7933FF",
-    sidebar: "#EDE4FF",
+    sidebar: "#E7E3EA",
     background: "#F5F5F5",
     text: {
         title: "#0B0020",

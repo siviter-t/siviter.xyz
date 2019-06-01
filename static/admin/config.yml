@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: siviter-t/siviter.xyz2-content
+
+media_folder: static/assets
+public_folder: assets
+
+collections:
+  - name: blog
+    label: Blog
+    folder: blog
+    slug: "{{date}}-{{slug}}"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Draft?", name: "draft", widget: "boolean", default: true}
+      - {label: "Use MathJax?", name: "useMathJax", widget: "boolean", default: false}
+      - {label: "Use CodePen?", name: "useCodePen", widget: "boolean", default: false}
+      - {label: "Body", name: "body", widget: "markdown"}

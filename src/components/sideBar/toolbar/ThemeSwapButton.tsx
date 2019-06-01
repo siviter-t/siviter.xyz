@@ -5,11 +5,15 @@ import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 import { AppState } from "state/AppState";
 import { SetThemeAction } from "state/components/LayoutState";
-
 import { Theme } from "style/Theme";
 import { Light } from "style/theme/Light";
 import { Dark } from "style/theme/Dark";
 import { IconButton } from "components/part/IconButton";
+
+function isNightTime() {
+    const hours = new Date().getHours();
+    return hours >= 19 || hours < 6;
+}
 
 const mapStateToProps = (state: AppState) => ({
     theme: state.layout.theme
@@ -31,6 +35,13 @@ export class ThemeSwapButtonComponent extends React.PureComponent<ThemeSwapProps
         this.state = {
             isDark: this.props.theme === Dark
         };
+    }
+
+    public componentDidMount() {
+        if (isNightTime()) {
+            this.props.setTheme(Dark);
+            this.setState({ isDark: true });
+        }
     }
 
     public render() {

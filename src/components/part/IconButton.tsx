@@ -9,12 +9,12 @@ const IconButtonStyle = styled.a`
     user-select: none;
     text-decoration: none;
     display: inline-block;
-    margin: 0 0.2em;
+    margin: 0.2em;
     padding: 0.1em 0.2em;
     border-radius: 0.6em;
     color: ${props => props.theme.text.title};
     border: 0.03em solid ${props => props.theme.text.title};
-    box-shadow: 0 0 0.1em ${props => props.theme.text.shadow};
+    box-shadow: 0 0 0.05em ${props => props.theme.text.shadow};
     transition: color 0.5s, border 0.5s, border-radius 0.25s;
 
     &:hover {

@@ -4,7 +4,7 @@ import { css } from "framework/StyledComponents";
 export enum Breakpoint {
     XL = 3840,
     L = 1920,
-    M = 1024,
+    M = 1280,
     S = 839,
     XS = 480
 }
