@@ -13,7 +13,6 @@
         "JAM"
     ],
     "license": "MIT",
-    "main": "",
     "scripts": {
         "start": "gatsby develop",
         "start-network": "gatsby develop -H 0.0.0.0 -p 8000",
