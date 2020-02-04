@@ -54,7 +54,7 @@ const MainColumn = styled.div<{ isShown: boolean }>`
 
 const Main = styled.div`
     color: ${props => props.theme.text.normal};
-    padding: 1em 3em 3em;
+    padding: 1em 5em 3em;
 
     & a {
         color: ${props => props.theme.brand};
