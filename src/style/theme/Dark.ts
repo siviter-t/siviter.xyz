@@ -5,10 +5,10 @@ export const Dark: Theme = {
     sidebar: "#0B0020",
     background: "#04000C",
     text: {
-        title: "#E0D0FF",
+        title: "#FAF9FB",
         subtitle: "#EEEEEE",
         emphasis: "#141416",
-        normal: "#E0D0FF",
+        normal: "#FAF9FB",
         subtle: "#A4A4AC",
         shadow: "#FFFFFF"
     }
