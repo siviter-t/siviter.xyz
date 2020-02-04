@@ -32,7 +32,7 @@ interface MenuListData {
 }
 
 const MenuContainer = styled.div`
-    margin: 0 0 0.5em;
+    margin: 0 0 1.5em;
     text-align: center;
 `;
 

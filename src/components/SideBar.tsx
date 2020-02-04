@@ -31,7 +31,6 @@ const Title = styled.h1`
         color: ${props => props.theme.text.title};
         letter-spacing: -0.05em;
         text-decoration: none;
-        text-shadow: 0 0 0.05em ${props => props.theme.text.shadow};
         position: relative;
 
         &:before {
