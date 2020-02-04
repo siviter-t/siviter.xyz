@@ -14,8 +14,7 @@
     ],
     "license": "MIT",
     "scripts": {
-        "start": "gatsby develop",
-        "start-network": "gatsby develop -H 0.0.0.0 -p 8000",
+        "start": "gatsby develop -H 0.0.0.0 -p 8000",
         "production": "gatsby build",
         "format": "prettier --write \"src/**/*.ts*\"",
         "lint": "tslint -c tslint.json --project tsconfig.json --force",
@@ -31,7 +30,7 @@
         "@fortawesome/react-fontawesome": "^0.1.4",
         "@rhysforyou/gatsby-plugin-react-helmet-async": "^0.1.1",
         "babel-plugin-styled-components": "^1.10.0",
-        "gatsby": "^2.3.32",
+        "gatsby": "^2.19.12",
         "gatsby-cli": "^2.7.0",
         "gatsby-link": "^2.0.16",
         "gatsby-plugin-layout": "^1.0.15",
