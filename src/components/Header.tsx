@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Helmet } from "react-helmet-async";
 import { StaticQuery, graphql } from "gatsby";
+import { FontAwesomeStylesheet } from "framework/FontAwesome";
 
 export const HeaderQuery = graphql`
     query HeaderQuery {
@@ -90,9 +91,12 @@ export class HeaderComponent extends React.PureComponent<HeaderProps> {
                         slug: this.props.slug
                     });
                     return (
-                        <Helmet title={fullTitle} meta={metadata}>
-                            <html lang="en" />
-                        </Helmet>
+                        <>
+                            <Helmet title={fullTitle} meta={metadata}>
+                                <html lang="en" />
+                            </Helmet>
+                            <FontAwesomeStylesheet />
+                        </>
                     );
                 }}
             />
