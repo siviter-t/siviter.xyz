@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { Location } from "@reach/router";
 
 import styled from "framework/StyledComponents";
+import { Media, Breakpoint } from "style/Media";
 import { MenuItem } from "components/sideBar/MenuItem";
 
 const MenuLineQuery = graphql`
@@ -31,15 +32,24 @@ interface MenuListData {
     };
 }
 
-const MenuContainer = styled.div`
+interface Props {
+    isHomePage: boolean;
+}
+
+const MenuContainer = styled.div<Props>`
     margin: 0 0 1.5em;
     text-align: center;
+    ${props =>
+        !props.isHomePage &&
+        Media.max(Breakpoint.M)`
+        margin-bottom: 0.75em;
+    `}
 `;
 
-export class MenuListComponent extends React.PureComponent {
+export class MenuListComponent extends React.PureComponent<Props> {
     public render() {
         return (
-            <MenuContainer>
+            <MenuContainer isHomePage={this.props.isHomePage}>
                 <Location>
                     {({ location }) => (
                         <StaticQuery
