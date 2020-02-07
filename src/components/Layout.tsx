@@ -56,6 +56,14 @@ const Main = styled.div`
     color: ${props => props.theme.text.normal};
     padding: 1em 5em 3em;
 
+    ${Media.max(Breakpoint.S)`
+        padding: 1em 3em 3em;
+    `}
+
+    ${Media.max(Breakpoint.XS)`
+        padding: 1em 2em 3em;
+    `}
+
     & a {
         color: ${props => props.theme.brand};
         font-weight: 700;
