@@ -22,15 +22,15 @@ const GridContainer = styled.div`
     ${Media.fluidTypography(Breakpoint.L, Breakpoint.XL, 16, 28)}
 `;
 
-const SideBarColumn = styled.div<{ isExpanded: boolean }>`
-    width: ${props => (props.isExpanded ? "100%" : "auto")};
+const SideBarColumn = styled.div<{ isHomePage: boolean }>`
+    width: ${props => (props.isHomePage ? "100%" : "auto")};
     height: 100%;
     display: flex;
     flex-shrink: 0;
     background: ${props => props.theme.sidebar};
     box-shadow: -5px -5px 5px 2px ${props => props.theme.brand};
     ${props =>
-        !props.isExpanded &&
+        !props.isHomePage &&
         Media.max(Breakpoint.M)`
         height: auto;
         display: block;
@@ -143,8 +143,8 @@ class LayoutComponent extends React.PureComponent<LayoutProps> {
                             const isHomePage = location.pathname === "/";
                             return (
                                 <GridContainer>
-                                    <SideBarColumn isExpanded={isHomePage}>
-                                        <SideBar />
+                                    <SideBarColumn isHomePage={isHomePage}>
+                                        <SideBar isHomePage={isHomePage} />
                                     </SideBarColumn>
                                     <MainColumn isShown={!isHomePage}>{this.renderMain(isHomePage)}</MainColumn>
                                 </GridContainer>

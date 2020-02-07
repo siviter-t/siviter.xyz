@@ -73,7 +73,11 @@ const Toolbar = styled.div`
     justify-content: center;
 `;
 
-export class SideBarComponent extends React.PureComponent {
+interface Props {
+    isHomePage: boolean;
+}
+
+export class SideBarComponent extends React.PureComponent<Props> {
     public render() {
         return (
             <SideBarContainer>
@@ -83,7 +87,7 @@ export class SideBarComponent extends React.PureComponent {
                 <SubTitle>
                     <SubTitleContent />
                 </SubTitle>
-                <MenuList />
+                <MenuList isHomePage={this.props.isHomePage} />
                 <Toolbar>
                     <EmailButton />
                     <LinkedInButton />
