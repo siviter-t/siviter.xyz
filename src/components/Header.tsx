@@ -2,6 +2,7 @@ import * as React from "react";
 import { Helmet } from "react-helmet-async";
 import { StaticQuery, graphql } from "gatsby";
 import { FontAwesomeStylesheet } from "framework/FontAwesome";
+import { Favicon } from "components/Favicon";
 
 export const HeaderQuery = graphql`
     query HeaderQuery {
@@ -95,6 +96,7 @@ export class HeaderComponent extends React.PureComponent<HeaderProps> {
                             <Helmet title={fullTitle} meta={metadata}>
                                 <html lang="en" />
                             </Helmet>
+                            <Favicon />
                             <FontAwesomeStylesheet />
                         </>
                     );
