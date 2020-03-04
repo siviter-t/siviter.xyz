@@ -14,7 +14,7 @@ const GridContainer = styled.div`
     background: ${props => props.theme.background};
     transition: all 0.3s ease-in-out;
     display: flex;
-    ${Media.max(Breakpoint.M)`
+    ${Media.max(Breakpoint.M - 1)`
         flex-flow: column;
         overflow-y: auto;
     `}

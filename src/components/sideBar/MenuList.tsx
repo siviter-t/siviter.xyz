@@ -41,7 +41,7 @@ const MenuContainer = styled.div<Props>`
     text-align: center;
     ${props =>
         !props.isHomePage &&
-        Media.max(Breakpoint.M)`
+        Media.max(Breakpoint.M - 1)`
         margin-bottom: 0.75em;
     `}
 `;
