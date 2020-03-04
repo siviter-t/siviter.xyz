@@ -4,6 +4,7 @@ import styled from "framework/StyledComponents";
 
 import { Media, Breakpoint } from "style/Media";
 import { Link } from "components/part/Link";
+import { Logo } from "components/sideBar/Logo";
 
 const TitleQuery = graphql`
     query TitleContentQuery {
@@ -27,40 +28,45 @@ export const Title: React.FC = () => <StaticQuery query={TitleQuery} render={Tit
 
 const TitleContainer = styled.h1`
     margin: 0 0 0.25em;
-    text-align: center;
 
-    & a {
-        font-size: 2em;
-        color: ${props => props.theme.text.title};
-        letter-spacing: -0.05em;
-        text-decoration: none;
-        position: relative;
-
-        &:before {
-            content: "";
-            width: 90%;
-            min-height: 1px;
-            height: 1%;
-            left: 5%;
-            bottom: 0.1em;
-            position: absolute;
-            transition: background 0.5s ease-out;
-        }
-
-        &:hover {
-            &:before {
-                background: ${props => props.theme.brand};
-            }
-        }
+    & svg {
+        width: 10em;
+        max-width: 100%;
 
         ${Media.max(Breakpoint.S)`
-            font-size: 1.5em;
+            width: 8em;
         `}
+
+        & .letters {
+            fill: ${props => props.theme.text.title};
+        }
+
+        & .inner-letters {
+            fill: ${props => props.theme.sidebar};
+            transition: fill 0.5s;
+        }
+
+        & .brackets {
+            fill: ${props => props.theme.text.subtle};
+            transition: fill 0.5s;
+        }
+
+        &:hover .inner-letters,
+        &:hover .brackets {
+            fill: ${props => props.theme.brandPastel};
+        }
+
+        &:active .inner-letters,
+        &:active .brackets {
+            fill: ${props => props.theme.brand};
+        }
     }
 `;
 
 const TitleRender: React.FC<TitleData> = props => (
     <TitleContainer>
-        <Link to="/">{props.site.siteMetadata.title}</Link>
+        <Link to="/">
+            <Logo title={props.site.siteMetadata.title} />
+        </Link>
     </TitleContainer>
 );
