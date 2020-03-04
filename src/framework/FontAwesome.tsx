@@ -4,10 +4,8 @@ import { config, dom } from "@fortawesome/fontawesome-svg-core";
 
 config.autoAddCss = false;
 
-export function FontAwesomeStylesheet() {
-    return (
-        <Helmet>
-            <style type="text/css">{dom.css()}</style>
-        </Helmet>
-    );
-}
+export const FontAwesomeStylesheet: React.FC = () => (
+    <Helmet>
+        <style type="text/css">{dom.css()}</style>
+    </Helmet>
+);
