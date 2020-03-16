@@ -3,7 +3,7 @@ import * as React from "react";
 import styled from "framework/StyledComponents";
 import { Media, Breakpoint } from "style/Media";
 
-import { TitleContent } from "components/sideBar/TitleContent";
+import { Title } from "components/sideBar/Title";
 import { SubTitleContent } from "components/sideBar/SubTitleContent";
 import { MenuList } from "components/sideBar/MenuList";
 import { EmailButton } from "components/sideBar/toolbar/EmailButton";
@@ -20,40 +20,6 @@ const SideBarContainer = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-`;
-
-const Title = styled.h1`
-    margin: 0 0 0.25em;
-    text-align: center;
-
-    & a {
-        font-size: 2em;
-        color: ${props => props.theme.text.title};
-        letter-spacing: -0.05em;
-        text-decoration: none;
-        position: relative;
-
-        &:before {
-            content: "";
-            width: 90%;
-            min-height: 1px;
-            height: 1%;
-            left: 5%;
-            bottom: 0.1em;
-            position: absolute;
-            transition: background 0.5s ease-out;
-        }
-
-        &:hover {
-            &:before {
-                background: ${props => props.theme.brand};
-            }
-        }
-
-        ${Media.max(Breakpoint.S)`
-            font-size: 1.5em;
-        `}
-    }
 `;
 
 const SubTitle = styled.div`
@@ -81,9 +47,7 @@ export class SideBarComponent extends React.PureComponent<Props> {
     public render() {
         return (
             <SideBarContainer>
-                <Title>
-                    <TitleContent />
-                </Title>
+                <Title />
                 <SubTitle>
                     <SubTitleContent />
                 </SubTitle>

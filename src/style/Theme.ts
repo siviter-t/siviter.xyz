@@ -1,5 +1,6 @@
 export interface Theme {
     brand: string;
+    brandPastel: string;
     sidebar: string;
     background: string;
     text: {
