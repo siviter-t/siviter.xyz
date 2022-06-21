@@ -1,3 +1,3 @@
 # Siviter.xyz
 
-#### Yet another developer blog, portfolio, and static website
+## Yet another personal website for a developer, but with JAM
