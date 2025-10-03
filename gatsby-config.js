@@ -1,9 +1,9 @@
 module.exports = {
     siteMetadata: {
         title: `Taylor Siviter`,
-        subtitle: `Developer, Programmer, Analyst, Techy`,
+        subtitle: `Software Engineer, Automator, Tinkerer`,
         description:
-            "Hello there. Infrequent writer of disjointed articles and lover of anything remotely technological.",
+            "Hello there. Infrequent writer of articles and lover of anything remotely technological.",
         siteName: `siviter.xyz`,
         url: `https://siviter.xyz`,
         email: `taylor@siviter.xyz`,
